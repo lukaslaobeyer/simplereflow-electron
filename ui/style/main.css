@@ -1,0 +1,62 @@
+.btn-circle {
+    margin: 18px 5px 18px 5px;
+    border-radius: 15px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 0.8;
+    padding: 0 0 2px 1px;
+}
+
+#min-btn {
+    margin-left: 10px;
+}
+
+#close-btn {
+    margin-right: 10px;
+}
+
+#content {
+    padding-top: 60px;
+}
+
+#error-msg {
+    padding-top: 60px;
+}
+
+#start-stop {
+    float: right;
+}
+
+#oven-status span {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#oven-status .value {
+    font-weight: normal;
+}
+
+#server-config .input-group {
+    display: inline-block;
+    width: 80%;
+}
+
+#temperature {
+    padding-top: 0;
+    margin-top: 7px;
+}
+
+#temp-history-container {
+    height: 80vh;
+}
+
+#config {
+    padding-top: 0;
+}
+
+#apply-settings {
+    float: right;
+    margin-top: 10px;
+}
