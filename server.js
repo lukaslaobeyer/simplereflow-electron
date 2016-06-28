@@ -123,12 +123,29 @@ function parseOvenPhase(dataline) {
 // Find the connected reflow oven, connect to it, and start updating the global status variables
 serialport.list(function (err, ports) {
     for(var i = 0; i < ports.length; i++) {
-        if((ports[i].vendorId.toLowerCase() == ovenVendorId && ports[i].productId.toLowerCase() == ovenProductId) || (ports[i].pnpId.toLowerCase().indexOf(ovenPnpVendorId) >= 0 && ports[i].pnpId.toLowerCase().indexOf(ovenPnpProductId) >= 0)) {
+        var match = false;
+        var pnp_match = false;
+
+        if(ports[i].vendorId && ports[i].productId) {
+            match = (ports[i].vendorId.toLowerCase() == ovenVendorId && ports[i].productId.toLowerCase() == ovenProductId);
+        }
+
+        if(ports[i].pnpId) {
+            pnp_match = (ports[i].pnpId.toLowerCase().indexOf(ovenPnpVendorId) >= 0 && ports[i].pnpId.toLowerCase().indexOf(ovenPnpProductId) >= 0);
+        }
+
+        if(match || pnp_match) {
             var oven = new serialport.SerialPort(ports[i].comName);
 
             oven.on('open', function() {
                 connected = true;
-                console.log('Connected to reflow oven at %s', ports[i].comName);
+
+                if(ports[i].comName) {
+                    console.log('Connected to reflow oven at %s', ports[i].comName);
+                } else {
+                    console.log('Connected to reflow oven');
+                }
+
                 oven.write('hello\r'); // First command is never recognized
 
                 var dataline = '';
@@ -193,6 +210,8 @@ serialport.list(function (err, ports) {
                     }
                 });
             });
+
+            break;
         }
     }
 });
