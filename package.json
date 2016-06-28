@@ -5,16 +5,14 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pack": "npm run pack:linux && npm run pack:osx && npm run pack:win",
-    "pack:linux": "electron-packager . \"Simple Reflow Controller\" --out=dist/linux --platform=linux --arch=x64 --version=0.0.1 --ignore=dist --ignore=README.md --ignore=.gitignore"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lukas Lao Beyer",
   "license": "MIT",
-  "devDependencies": {
-    "electron-packager": "^7.1.0",
+  "dependencies": {
     "electron-prebuilt": "^1.2.5",
     "electron-rebuild": "^1.1.5",
     "serialport": "^3.1.2"
-  }
+  },
+  "repository": "https://github.com/lukaslaobeyer/simplereflow-electron"
 }
